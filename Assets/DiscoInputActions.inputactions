@@ -1,0 +1,76 @@
+{
+    "name": "DiscoInputActions",
+    "maps": [
+        {
+            "name": "DiscoInputMap",
+            "id": "c6680ac4-62fc-44f7-ba84-e4db5f27e594",
+            "actions": [
+                {
+                    "name": "BackgroundColor",
+                    "type": "Value",
+                    "id": "f86d8659-c9c7-4273-b4ff-1f7619fbe09f",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "SpawnNewLight",
+                    "type": "Button",
+                    "id": "4fca640c-9b48-4fcf-9f2c-cfed93b28e43",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "1D Axis",
+                    "id": "b85162d4-3ced-487f-ab40-573b68aed0c0",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BackgroundColor",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "7720d43d-e8c7-4208-b113-087585390c50",
+                    "path": "<Keyboard>/7",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BackgroundColor",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "f40d579a-f64f-4c58-bacb-05db9ad14f37",
+                    "path": "<Keyboard>/8",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BackgroundColor",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "fa2b8e39-ebe6-4faf-b658-672d4fe13f34",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SpawnNewLight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
