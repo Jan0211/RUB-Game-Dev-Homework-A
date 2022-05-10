@@ -1,34 +1,65 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Random = UnityEngine.Random;
 
 public class DiscoHandler : MonoBehaviour
 {
     [SerializeField] private Transform lightsHolder;
     [SerializeField] private GameObject[] lights;
+    [SerializeField] private Transform player;
+    [SerializeField] private float movementSpeed = 5.0f;
 
-    private DiscoInputActions inputActions;
-    private SpriteRenderer spriteRenderer;
+    private DiscoInputActions _inputActions;
+    private SpriteRenderer _spriteRenderer;
+
+    private Vector2 _moveDirection;
+    private float _sprintSpeed = 1f;
+    private bool _stealth;
 
     private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        inputActions = new DiscoInputActions();
-        inputActions.DiscoInputMap.BackgroundColor.started += UpdateBackgroundColor;
-        inputActions.DiscoInputMap.SpawnNewLight.started += SpawnNewRandomLight;
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _inputActions = new DiscoInputActions();
+        _inputActions.DiscoInputMap.BackgroundColor.started += UpdateBackgroundColor;
+        _inputActions.DiscoInputMap.SpawnNewLight.started += SpawnNewRandomLight;
+        _inputActions.DiscoInputMap.Move.started += UpdateMoveDirection;
+        _inputActions.DiscoInputMap.Move.canceled += UpdateMoveDirection;
+        _inputActions.DiscoInputMap.Move.performed += UpdateMoveDirection;
+        _inputActions.DiscoInputMap.Sprint.started += (context) => { _sprintSpeed = 1.25f; };
+        _inputActions.DiscoInputMap.Sprint.canceled += (context) => { _sprintSpeed = 1f; };
+        _inputActions.DiscoInputMap.Stealth.started += context =>
+        {
+            _stealth = !_stealth;
+            if(_stealth) player.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
+            else player.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+        };
+        _inputActions.DiscoInputMap.ChangeSprite.started += context =>
+        {
+            player.GetComponent<SpriteChanger>().ChangeToRandomSprite();
+        };
     }
 
     private void OnEnable()
     {
-        inputActions.DiscoInputMap.Enable();
+        _inputActions.DiscoInputMap.Enable();
+    }
+
+    private void Update()
+    {
+        if (_stealth) player.Translate(_moveDirection * (Time.deltaTime * movementSpeed * 0.45f));
+        else player.Translate(_moveDirection * (Time.deltaTime * movementSpeed * _sprintSpeed));
     }
 
     private void UpdateBackgroundColor(InputAction.CallbackContext context)
     {
         var axis = context.ReadValue<float>();
-        if(axis > 0 && spriteRenderer.color.r <= 0.9f) spriteRenderer.color = new Color(spriteRenderer.color.r + 0.1f, spriteRenderer.color.g + 0.1f, spriteRenderer.color.g + 0.1f, 1);
-        else if(axis < 0 && spriteRenderer.color.r >= 0.1f) spriteRenderer.color = new Color(spriteRenderer.color.r - 0.1f, spriteRenderer.color.g - 0.1f, spriteRenderer.color.g - 0.1f, 1);
+        var spriteRendererColor = _spriteRenderer.color;
+        if (axis > 0 && spriteRendererColor.r <= 0.9f)
+            _spriteRenderer.color = new Color(spriteRendererColor.r + 0.1f, spriteRendererColor.g + 0.1f,
+                spriteRendererColor.g + 0.1f, 1);
+        else if (axis < 0 && spriteRendererColor.r >= 0.1f)
+            _spriteRenderer.color = new Color(spriteRendererColor.r - 0.1f, spriteRendererColor.g - 0.1f,
+                spriteRendererColor.g - 0.1f, 1);
     }
 
     private void SpawnNewRandomLight(InputAction.CallbackContext context)
@@ -37,4 +68,8 @@ public class DiscoHandler : MonoBehaviour
         Instantiate(lights[Random.Range(0, lights.Length)], pos, Quaternion.identity).transform.SetParent(lightsHolder);
     }
 
+    private void UpdateMoveDirection(InputAction.CallbackContext context)
+    {
+        _moveDirection = context.ReadValue<Vector2>();
+    }
 }

@@ -44,6 +44,42 @@ public partial class @DiscoInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""db1ff2b1-ba10-4813-aaec-5fd945d4977a"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Sprint"",
+                    ""type"": ""Button"",
+                    ""id"": ""3454eece-5410-4468-b9ba-249ed21483f8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Stealth"",
+                    ""type"": ""Button"",
+                    ""id"": ""d2091145-7306-4ea7-bb30-f98529fffad4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeSprite"",
+                    ""type"": ""Button"",
+                    ""id"": ""71f6d521-2029-4d63-a607-d72dc0879c71"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -90,6 +126,94 @@ public partial class @DiscoInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""SpawnNewLight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""19630d2b-3ce6-42ea-ab9f-16a2a2c57f77"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""950fa694-17ba-47fb-b320-2bc1d749296d"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""a94ec75a-6f0b-403c-98d6-e07fa55163ca"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""ac3521bf-29ec-4fbd-b6ac-9da9b92baa6c"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""934eb495-3ba4-4c56-a467-1ff19e79b356"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""54bf642b-f5c4-451b-b6a0-cb09a157854d"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1773e7d0-3c0c-4b93-95e5-5a2ed8dd74da"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Stealth"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""de6c5039-579f-489b-9796-80bf5f202852"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeSprite"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -100,6 +224,10 @@ public partial class @DiscoInputActions : IInputActionCollection2, IDisposable
         m_DiscoInputMap = asset.FindActionMap("DiscoInputMap", throwIfNotFound: true);
         m_DiscoInputMap_BackgroundColor = m_DiscoInputMap.FindAction("BackgroundColor", throwIfNotFound: true);
         m_DiscoInputMap_SpawnNewLight = m_DiscoInputMap.FindAction("SpawnNewLight", throwIfNotFound: true);
+        m_DiscoInputMap_Move = m_DiscoInputMap.FindAction("Move", throwIfNotFound: true);
+        m_DiscoInputMap_Sprint = m_DiscoInputMap.FindAction("Sprint", throwIfNotFound: true);
+        m_DiscoInputMap_Stealth = m_DiscoInputMap.FindAction("Stealth", throwIfNotFound: true);
+        m_DiscoInputMap_ChangeSprite = m_DiscoInputMap.FindAction("ChangeSprite", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -161,12 +289,20 @@ public partial class @DiscoInputActions : IInputActionCollection2, IDisposable
     private IDiscoInputMapActions m_DiscoInputMapActionsCallbackInterface;
     private readonly InputAction m_DiscoInputMap_BackgroundColor;
     private readonly InputAction m_DiscoInputMap_SpawnNewLight;
+    private readonly InputAction m_DiscoInputMap_Move;
+    private readonly InputAction m_DiscoInputMap_Sprint;
+    private readonly InputAction m_DiscoInputMap_Stealth;
+    private readonly InputAction m_DiscoInputMap_ChangeSprite;
     public struct DiscoInputMapActions
     {
         private @DiscoInputActions m_Wrapper;
         public DiscoInputMapActions(@DiscoInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @BackgroundColor => m_Wrapper.m_DiscoInputMap_BackgroundColor;
         public InputAction @SpawnNewLight => m_Wrapper.m_DiscoInputMap_SpawnNewLight;
+        public InputAction @Move => m_Wrapper.m_DiscoInputMap_Move;
+        public InputAction @Sprint => m_Wrapper.m_DiscoInputMap_Sprint;
+        public InputAction @Stealth => m_Wrapper.m_DiscoInputMap_Stealth;
+        public InputAction @ChangeSprite => m_Wrapper.m_DiscoInputMap_ChangeSprite;
         public InputActionMap Get() { return m_Wrapper.m_DiscoInputMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -182,6 +318,18 @@ public partial class @DiscoInputActions : IInputActionCollection2, IDisposable
                 @SpawnNewLight.started -= m_Wrapper.m_DiscoInputMapActionsCallbackInterface.OnSpawnNewLight;
                 @SpawnNewLight.performed -= m_Wrapper.m_DiscoInputMapActionsCallbackInterface.OnSpawnNewLight;
                 @SpawnNewLight.canceled -= m_Wrapper.m_DiscoInputMapActionsCallbackInterface.OnSpawnNewLight;
+                @Move.started -= m_Wrapper.m_DiscoInputMapActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_DiscoInputMapActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_DiscoInputMapActionsCallbackInterface.OnMove;
+                @Sprint.started -= m_Wrapper.m_DiscoInputMapActionsCallbackInterface.OnSprint;
+                @Sprint.performed -= m_Wrapper.m_DiscoInputMapActionsCallbackInterface.OnSprint;
+                @Sprint.canceled -= m_Wrapper.m_DiscoInputMapActionsCallbackInterface.OnSprint;
+                @Stealth.started -= m_Wrapper.m_DiscoInputMapActionsCallbackInterface.OnStealth;
+                @Stealth.performed -= m_Wrapper.m_DiscoInputMapActionsCallbackInterface.OnStealth;
+                @Stealth.canceled -= m_Wrapper.m_DiscoInputMapActionsCallbackInterface.OnStealth;
+                @ChangeSprite.started -= m_Wrapper.m_DiscoInputMapActionsCallbackInterface.OnChangeSprite;
+                @ChangeSprite.performed -= m_Wrapper.m_DiscoInputMapActionsCallbackInterface.OnChangeSprite;
+                @ChangeSprite.canceled -= m_Wrapper.m_DiscoInputMapActionsCallbackInterface.OnChangeSprite;
             }
             m_Wrapper.m_DiscoInputMapActionsCallbackInterface = instance;
             if (instance != null)
@@ -192,6 +340,18 @@ public partial class @DiscoInputActions : IInputActionCollection2, IDisposable
                 @SpawnNewLight.started += instance.OnSpawnNewLight;
                 @SpawnNewLight.performed += instance.OnSpawnNewLight;
                 @SpawnNewLight.canceled += instance.OnSpawnNewLight;
+                @Move.started += instance.OnMove;
+                @Move.performed += instance.OnMove;
+                @Move.canceled += instance.OnMove;
+                @Sprint.started += instance.OnSprint;
+                @Sprint.performed += instance.OnSprint;
+                @Sprint.canceled += instance.OnSprint;
+                @Stealth.started += instance.OnStealth;
+                @Stealth.performed += instance.OnStealth;
+                @Stealth.canceled += instance.OnStealth;
+                @ChangeSprite.started += instance.OnChangeSprite;
+                @ChangeSprite.performed += instance.OnChangeSprite;
+                @ChangeSprite.canceled += instance.OnChangeSprite;
             }
         }
     }
@@ -200,5 +360,9 @@ public partial class @DiscoInputActions : IInputActionCollection2, IDisposable
     {
         void OnBackgroundColor(InputAction.CallbackContext context);
         void OnSpawnNewLight(InputAction.CallbackContext context);
+        void OnMove(InputAction.CallbackContext context);
+        void OnSprint(InputAction.CallbackContext context);
+        void OnStealth(InputAction.CallbackContext context);
+        void OnChangeSprite(InputAction.CallbackContext context);
     }
 }
