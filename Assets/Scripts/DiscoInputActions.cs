@@ -80,6 +80,33 @@ public partial class @DiscoInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dance1"",
+                    ""type"": ""Button"",
+                    ""id"": ""636ace61-e9c0-428b-b733-5bc08998aa7a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dance2"",
+                    ""type"": ""Button"",
+                    ""id"": ""4ac28748-fd9d-46a2-9492-3187bc787f70"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dance3"",
+                    ""type"": ""Button"",
+                    ""id"": ""d34e9a7f-3bcc-4549-b033-ef9c5e06366a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -214,6 +241,39 @@ public partial class @DiscoInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""ChangeSprite"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3b3a4277-b809-4d9f-913a-bc5c4051776c"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dance1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""73b21ec3-4181-468f-9c35-12e7637d9296"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dance2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3b2de18c-7ed5-4799-ad87-37085daf984f"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dance3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -228,6 +288,9 @@ public partial class @DiscoInputActions : IInputActionCollection2, IDisposable
         m_DiscoInputMap_Sprint = m_DiscoInputMap.FindAction("Sprint", throwIfNotFound: true);
         m_DiscoInputMap_Stealth = m_DiscoInputMap.FindAction("Stealth", throwIfNotFound: true);
         m_DiscoInputMap_ChangeSprite = m_DiscoInputMap.FindAction("ChangeSprite", throwIfNotFound: true);
+        m_DiscoInputMap_Dance1 = m_DiscoInputMap.FindAction("Dance1", throwIfNotFound: true);
+        m_DiscoInputMap_Dance2 = m_DiscoInputMap.FindAction("Dance2", throwIfNotFound: true);
+        m_DiscoInputMap_Dance3 = m_DiscoInputMap.FindAction("Dance3", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -293,6 +356,9 @@ public partial class @DiscoInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_DiscoInputMap_Sprint;
     private readonly InputAction m_DiscoInputMap_Stealth;
     private readonly InputAction m_DiscoInputMap_ChangeSprite;
+    private readonly InputAction m_DiscoInputMap_Dance1;
+    private readonly InputAction m_DiscoInputMap_Dance2;
+    private readonly InputAction m_DiscoInputMap_Dance3;
     public struct DiscoInputMapActions
     {
         private @DiscoInputActions m_Wrapper;
@@ -303,6 +369,9 @@ public partial class @DiscoInputActions : IInputActionCollection2, IDisposable
         public InputAction @Sprint => m_Wrapper.m_DiscoInputMap_Sprint;
         public InputAction @Stealth => m_Wrapper.m_DiscoInputMap_Stealth;
         public InputAction @ChangeSprite => m_Wrapper.m_DiscoInputMap_ChangeSprite;
+        public InputAction @Dance1 => m_Wrapper.m_DiscoInputMap_Dance1;
+        public InputAction @Dance2 => m_Wrapper.m_DiscoInputMap_Dance2;
+        public InputAction @Dance3 => m_Wrapper.m_DiscoInputMap_Dance3;
         public InputActionMap Get() { return m_Wrapper.m_DiscoInputMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -330,6 +399,15 @@ public partial class @DiscoInputActions : IInputActionCollection2, IDisposable
                 @ChangeSprite.started -= m_Wrapper.m_DiscoInputMapActionsCallbackInterface.OnChangeSprite;
                 @ChangeSprite.performed -= m_Wrapper.m_DiscoInputMapActionsCallbackInterface.OnChangeSprite;
                 @ChangeSprite.canceled -= m_Wrapper.m_DiscoInputMapActionsCallbackInterface.OnChangeSprite;
+                @Dance1.started -= m_Wrapper.m_DiscoInputMapActionsCallbackInterface.OnDance1;
+                @Dance1.performed -= m_Wrapper.m_DiscoInputMapActionsCallbackInterface.OnDance1;
+                @Dance1.canceled -= m_Wrapper.m_DiscoInputMapActionsCallbackInterface.OnDance1;
+                @Dance2.started -= m_Wrapper.m_DiscoInputMapActionsCallbackInterface.OnDance2;
+                @Dance2.performed -= m_Wrapper.m_DiscoInputMapActionsCallbackInterface.OnDance2;
+                @Dance2.canceled -= m_Wrapper.m_DiscoInputMapActionsCallbackInterface.OnDance2;
+                @Dance3.started -= m_Wrapper.m_DiscoInputMapActionsCallbackInterface.OnDance3;
+                @Dance3.performed -= m_Wrapper.m_DiscoInputMapActionsCallbackInterface.OnDance3;
+                @Dance3.canceled -= m_Wrapper.m_DiscoInputMapActionsCallbackInterface.OnDance3;
             }
             m_Wrapper.m_DiscoInputMapActionsCallbackInterface = instance;
             if (instance != null)
@@ -352,6 +430,15 @@ public partial class @DiscoInputActions : IInputActionCollection2, IDisposable
                 @ChangeSprite.started += instance.OnChangeSprite;
                 @ChangeSprite.performed += instance.OnChangeSprite;
                 @ChangeSprite.canceled += instance.OnChangeSprite;
+                @Dance1.started += instance.OnDance1;
+                @Dance1.performed += instance.OnDance1;
+                @Dance1.canceled += instance.OnDance1;
+                @Dance2.started += instance.OnDance2;
+                @Dance2.performed += instance.OnDance2;
+                @Dance2.canceled += instance.OnDance2;
+                @Dance3.started += instance.OnDance3;
+                @Dance3.performed += instance.OnDance3;
+                @Dance3.canceled += instance.OnDance3;
             }
         }
     }
@@ -364,5 +451,8 @@ public partial class @DiscoInputActions : IInputActionCollection2, IDisposable
         void OnSprint(InputAction.CallbackContext context);
         void OnStealth(InputAction.CallbackContext context);
         void OnChangeSprite(InputAction.CallbackContext context);
+        void OnDance1(InputAction.CallbackContext context);
+        void OnDance2(InputAction.CallbackContext context);
+        void OnDance3(InputAction.CallbackContext context);
     }
 }

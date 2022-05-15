@@ -7,6 +7,7 @@ public class DiscoHandler : MonoBehaviour
     [SerializeField] private Transform lightsHolder;
     [SerializeField] private GameObject[] lights;
     [SerializeField] private Transform player;
+    [SerializeField] private Transform playerMoveable;
     [SerializeField] private float movementSpeed = 5.0f;
 
     private DiscoInputActions _inputActions;
@@ -16,8 +17,11 @@ public class DiscoHandler : MonoBehaviour
     private float _sprintSpeed = 1f;
     private bool _stealth;
 
+    private Animator _animator;
+
     private void Awake()
     {
+        _animator = player.GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _inputActions = new DiscoInputActions();
         _inputActions.DiscoInputMap.BackgroundColor.started += UpdateBackgroundColor;
@@ -25,18 +29,21 @@ public class DiscoHandler : MonoBehaviour
         _inputActions.DiscoInputMap.Move.started += UpdateMoveDirection;
         _inputActions.DiscoInputMap.Move.canceled += UpdateMoveDirection;
         _inputActions.DiscoInputMap.Move.performed += UpdateMoveDirection;
-        _inputActions.DiscoInputMap.Sprint.started += (context) => { _sprintSpeed = 1.25f; };
-        _inputActions.DiscoInputMap.Sprint.canceled += (context) => { _sprintSpeed = 1f; };
-        _inputActions.DiscoInputMap.Stealth.started += context =>
+        _inputActions.DiscoInputMap.Sprint.started += (_) => { _sprintSpeed = 1.25f; };
+        _inputActions.DiscoInputMap.Sprint.canceled += (_) => { _sprintSpeed = 1f; };
+        _inputActions.DiscoInputMap.Stealth.started += (_) =>
         {
             _stealth = !_stealth;
-            if(_stealth) player.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
-            else player.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+            player.GetComponent<SpriteRenderer>().color = _stealth ? new Color(1, 1, 1, 0.5f) : new Color(1, 1, 1, 1);
         };
-        _inputActions.DiscoInputMap.ChangeSprite.started += context =>
+        _inputActions.DiscoInputMap.ChangeSprite.started += (_) =>
         {
             player.GetComponent<SpriteChanger>().ChangeToRandomSprite();
         };
+
+        _inputActions.DiscoInputMap.Dance1.started += (_) => { PerformDanceMove(1); };
+        _inputActions.DiscoInputMap.Dance2.started += (_) => { PerformDanceMove(2); };
+        _inputActions.DiscoInputMap.Dance3.started += (_) => { PerformDanceMove(3); };
     }
 
     private void OnEnable()
@@ -46,8 +53,11 @@ public class DiscoHandler : MonoBehaviour
 
     private void Update()
     {
-        if (_stealth) player.Translate(_moveDirection * (Time.deltaTime * movementSpeed * 0.45f));
-        else player.Translate(_moveDirection * (Time.deltaTime * movementSpeed * _sprintSpeed));
+        if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Wait"))
+        {
+            if (_stealth) playerMoveable.Translate(_moveDirection * (Time.deltaTime * movementSpeed * 0.45f));
+            else playerMoveable.Translate(_moveDirection * (Time.deltaTime * movementSpeed * _sprintSpeed));
+        }
     }
 
     private void UpdateBackgroundColor(InputAction.CallbackContext context)
@@ -72,4 +82,15 @@ public class DiscoHandler : MonoBehaviour
     {
         _moveDirection = context.ReadValue<Vector2>();
     }
+
+    private void PerformDanceMove(int i)
+    {
+        if (_stealth)
+        {
+            player.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+            _stealth = !_stealth;
+        }
+        _animator.SetTrigger($"Dance{i}");
+    }
+    
 }

@@ -1,14 +1,13 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LightChanger : MonoBehaviour
 {
-    private SpriteRenderer spriteRenderer;
+    private SpriteRenderer _spriteRenderer;
 
     private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Start()
@@ -20,7 +19,7 @@ public class LightChanger : MonoBehaviour
     {
         while(isActiveAndEnabled)
         {
-            spriteRenderer.color = new Color(Random.value, Random.value, Random.value);
+            _spriteRenderer.color = new Color(Random.value, Random.value, Random.value);
             yield return new WaitForSeconds((Random.value * 3) + 2);
         }
     }
