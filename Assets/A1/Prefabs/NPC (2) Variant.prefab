@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2089127071135538791, guid: 47bcc82ade2f42749847ee5162c2f430, type: 3}
       propertyPath: m_Name
-      value: NPC (2)
+      value: NPC (2) Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2089127071135538808, guid: 47bcc82ade2f42749847ee5162c2f430, type: 3}
       propertyPath: m_RootOrder
@@ -17,11 +17,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2089127071135538808, guid: 47bcc82ade2f42749847ee5162c2f430, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.07
+      value: -3.7039113
       objectReference: {fileID: 0}
     - target: {fileID: 2089127071135538808, guid: 47bcc82ade2f42749847ee5162c2f430, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.34
+      value: 2.031094
       objectReference: {fileID: 0}
     - target: {fileID: 2089127071135538808, guid: 47bcc82ade2f42749847ee5162c2f430, type: 3}
       propertyPath: m_LocalPosition.z
@@ -33,15 +33,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2089127071135538808, guid: 47bcc82ade2f42749847ee5162c2f430, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2089127071135538808, guid: 47bcc82ade2f42749847ee5162c2f430, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2089127071135538808, guid: 47bcc82ade2f42749847ee5162c2f430, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2089127071135538808, guid: 47bcc82ade2f42749847ee5162c2f430, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -59,5 +59,9 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: e1fb3c7f627494241963cabbbf97ad2e, type: 3}
+    - target: {fileID: 2089127071142855949, guid: 47bcc82ade2f42749847ee5162c2f430, type: 3}
+      propertyPath: dogeSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0d4f0a4b68920f7459fde8ad2d50ea20, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47bcc82ade2f42749847ee5162c2f430, type: 3}

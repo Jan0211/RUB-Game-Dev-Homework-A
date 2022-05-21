@@ -12,7 +12,8 @@ namespace A1.Scripts
         [SerializeField] private Transform playerMoveable;
         [SerializeField] private float movementSpeed = 5.0f;
 
-        private DiscoInputActions _inputActions;
+        public DiscoInputActions InputActions { get; private set; }
+
         private SpriteRenderer _spriteRenderer;
 
         private Vector2 _moveDirection;
@@ -25,32 +26,32 @@ namespace A1.Scripts
         {
             _animator = player.GetComponent<Animator>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
-            _inputActions = new DiscoInputActions();
-            _inputActions.DiscoInputMap.BackgroundColor.started += UpdateBackgroundColor;
-            _inputActions.DiscoInputMap.SpawnNewLight.started += SpawnNewRandomLight;
-            _inputActions.DiscoInputMap.Move.started += UpdateMoveDirection;
-            _inputActions.DiscoInputMap.Move.canceled += UpdateMoveDirection;
-            _inputActions.DiscoInputMap.Move.performed += UpdateMoveDirection;
-            _inputActions.DiscoInputMap.Sprint.started += (_) => { _sprintSpeed = 1.25f; };
-            _inputActions.DiscoInputMap.Sprint.canceled += (_) => { _sprintSpeed = 1f; };
-            _inputActions.DiscoInputMap.Stealth.started += (_) =>
+            InputActions = new DiscoInputActions();
+            InputActions.DiscoInputMap.BackgroundColor.started += UpdateBackgroundColor;
+            InputActions.DiscoInputMap.SpawnNewLight.started += SpawnNewRandomLight;
+            InputActions.DiscoInputMap.Move.started += UpdateMoveDirection;
+            InputActions.DiscoInputMap.Move.canceled += UpdateMoveDirection;
+            InputActions.DiscoInputMap.Move.performed += UpdateMoveDirection;
+            InputActions.DiscoInputMap.Sprint.started += (_) => { _sprintSpeed = 1.25f; };
+            InputActions.DiscoInputMap.Sprint.canceled += (_) => { _sprintSpeed = 1f; };
+            InputActions.DiscoInputMap.Stealth.started += (_) =>
             {
                 _stealth = !_stealth;
                 player.GetComponent<SpriteRenderer>().color = _stealth ? new Color(1, 1, 1, 0.5f) : new Color(1, 1, 1, 1);
             };
-            _inputActions.DiscoInputMap.ChangeSprite.started += (_) =>
+            InputActions.DiscoInputMap.ChangeSprite.started += (_) =>
             {
                 player.GetComponent<SpriteChanger>().ChangeToRandomSprite();
             };
 
-            _inputActions.DiscoInputMap.Dance1.started += (_) => { PerformDanceMove(1); };
-            _inputActions.DiscoInputMap.Dance2.started += (_) => { PerformDanceMove(2); };
-            _inputActions.DiscoInputMap.Dance3.started += (_) => { PerformDanceMove(3); };
+            InputActions.DiscoInputMap.Dance1.started += (_) => { PerformDanceMove(1); };
+            InputActions.DiscoInputMap.Dance2.started += (_) => { PerformDanceMove(2); };
+            InputActions.DiscoInputMap.Dance3.started += (_) => { PerformDanceMove(3); };
         }
 
         private void OnEnable()
         {
-            _inputActions.DiscoInputMap.Enable();
+            InputActions.DiscoInputMap.Enable();
         }
 
         private void Update()

@@ -6,11 +6,16 @@ namespace A1.Scripts
 {
     public class NpcController : MonoBehaviour
     {
+        [SerializeField] private Sprite dogeSprite;
+        
         private Animator _animator;
         private bool _isAnimated;
+        private bool _isInDogeMode;
+        private SpriteRenderer _spriteRenderer;
 
         private void Awake()
         {
+            _spriteRenderer = GetComponent<SpriteRenderer>();
             _animator = GetComponent<Animator>();
             _isAnimated = true;
         }
@@ -33,6 +38,14 @@ namespace A1.Scripts
                 int id = Random.Range(1, 4);
                 _animator.SetTrigger($"Dance{id}");
             }
+        }
+
+        public void Doge()
+        {
+            if (_isInDogeMode) return;
+            _isInDogeMode = true;
+            _spriteRenderer.sprite = dogeSprite;
+            transform.parent.transform.Rotate(0, 0, 180);
         }
 
     }

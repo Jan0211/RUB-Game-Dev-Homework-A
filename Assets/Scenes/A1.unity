@@ -895,7 +895,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 4096df8213204204fb7cb9e429ffe88c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -974,6 +974,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 908704219}
+  - component: {fileID: 908704220}
+  - component: {fileID: 908704221}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -996,6 +998,71 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &908704220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908704218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5556e90eb8446d59485655d5d73bcba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doge:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1782969226}
+        m_TargetAssemblyTypeName: A1.Scripts.NpcCollectionHandler, Assembly-CSharp
+        m_MethodName: Doge
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Doge
+          m_BoolArgument: 0
+        m_CallState: 2
+  lockdown:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 908704221}
+        m_TargetAssemblyTypeName: A1.Scripts.LockdownHandler, Assembly-CSharp
+        m_MethodName: StartLockdown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  squidgame:
+    m_PersistentCalls:
+      m_Calls: []
+  additional1:
+    m_PersistentCalls:
+      m_Calls: []
+  additional2:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &908704221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908704218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed2abd42a43e4d0f8fcb770681e2f0f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lockdownAnimalPrefab: {fileID: 1097151634760657659, guid: 7983f228993f80e428a66a0106cc60f3, type: 3}
+  cameraTransform: {fileID: 519420032}
 --- !u!4 &912261533 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7184331349061661928, guid: 1701e7173a3f8bd4aa50f3f544d40eff, type: 3}
@@ -1648,6 +1715,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1782969225}
+  - component: {fileID: 1782969226}
   m_Layer: 0
   m_Name: NPCs
   m_TagString: Untagged
@@ -1675,6 +1743,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1782969226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782969224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b4f2b3861ba4c4f965975269a67b96d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1801312157 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8498339158808067366, guid: 3d801ff9a4e9ff9458151bef4884c403, type: 3}
