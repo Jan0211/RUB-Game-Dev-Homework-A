@@ -13,6 +13,8 @@ namespace A1.Scripts
         private bool _isInDogeMode;
         private SpriteRenderer _spriteRenderer;
 
+        private SquidgameHandler _squidgameHandler;
+
         private void Awake()
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -22,6 +24,7 @@ namespace A1.Scripts
 
         private void Start()
         {
+            _squidgameHandler = FindObjectOfType<SquidgameHandler>();
             StartCoroutine(PlayRandomAnimation());
         }
 
@@ -29,13 +32,19 @@ namespace A1.Scripts
         {
             _isAnimated = false;
         }
-    
+
+        private void Update()
+        {
+            if (_squidgameHandler.IsSquidgameRed && !_animator.GetCurrentAnimatorStateInfo(0).IsName("Wait"))
+                StartCoroutine(Die());
+        }
+
         private IEnumerator PlayRandomAnimation()
         {
             while (_isAnimated)
             {
                 yield return new WaitForSeconds(Random.Range(1, 6));
-                int id = Random.Range(1, 4);
+                var id = Random.Range(1, 4);
                 _animator.SetTrigger($"Dance{id}");
             }
         }
@@ -48,5 +57,11 @@ namespace A1.Scripts
             transform.parent.transform.Rotate(0, 0, 180);
         }
 
+        private IEnumerator Die()
+        {
+            yield return new WaitForSeconds(1);
+            Destroy(this.gameObject);
+        }
+        
     }
 }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 namespace A1.Scripts
@@ -12,10 +13,12 @@ namespace A1.Scripts
         [SerializeField] private Transform playerMoveable;
         [SerializeField] private float movementSpeed = 5.0f;
 
-        public DiscoInputActions InputActions { get; private set; }
+        private DiscoInputActions InputActions { get; set; }
 
         private SpriteRenderer _spriteRenderer;
 
+        private SquidgameHandler _squidgameHandler;
+        
         private Vector2 _moveDirection;
         private float _sprintSpeed = 1f;
         private bool _stealth;
@@ -24,6 +27,7 @@ namespace A1.Scripts
 
         private void Awake()
         {
+            _squidgameHandler = FindObjectOfType<SquidgameHandler>();
             _animator = player.GetComponent<Animator>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
             InputActions = new DiscoInputActions();
@@ -34,6 +38,7 @@ namespace A1.Scripts
             InputActions.DiscoInputMap.Move.performed += UpdateMoveDirection;
             InputActions.DiscoInputMap.Sprint.started += (_) => { _sprintSpeed = 1.25f; };
             InputActions.DiscoInputMap.Sprint.canceled += (_) => { _sprintSpeed = 1f; };
+            InputActions.DiscoInputMap.Stealth.started += (_) =>
             InputActions.DiscoInputMap.Stealth.started += (_) =>
             {
                 _stealth = !_stealth;
@@ -58,6 +63,7 @@ namespace A1.Scripts
         {
             if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Wait"))
             {
+                if (_squidgameHandler.IsSquidgameRed && _moveDirection.magnitude >= 0.1) SceneManager.LoadScene("A1");
                 if (_stealth) playerMoveable.Translate(_moveDirection * (Time.deltaTime * movementSpeed * 0.45f));
                 else playerMoveable.Translate(_moveDirection * (Time.deltaTime * movementSpeed * _sprintSpeed));
             }

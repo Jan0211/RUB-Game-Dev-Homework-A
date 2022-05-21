@@ -976,6 +976,7 @@ GameObject:
   - component: {fileID: 908704219}
   - component: {fileID: 908704220}
   - component: {fileID: 908704221}
+  - component: {fileID: 908704222}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -1042,7 +1043,19 @@ MonoBehaviour:
         m_CallState: 2
   squidgame:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 908704222}
+        m_TargetAssemblyTypeName: A1.Scripts.SquidgameHandler, Assembly-CSharp
+        m_MethodName: StartSquidGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   additional1:
     m_PersistentCalls:
       m_Calls: []
@@ -1063,6 +1076,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lockdownAnimalPrefab: {fileID: 1097151634760657659, guid: 7983f228993f80e428a66a0106cc60f3, type: 3}
   cameraTransform: {fileID: 519420032}
+--- !u!114 &908704222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908704218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4fbe3f53e174568964cf9fd4582f59b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &912261533 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7184331349061661928, guid: 1701e7173a3f8bd4aa50f3f544d40eff, type: 3}
