@@ -8,6 +8,7 @@ namespace A3.Scripts
         [SerializeField] private GameObject obsUp;
         [SerializeField] private GameObject obsDown;
         [SerializeField] private GameObject duck;
+        [SerializeField] private GameObject powerUp;
         [SerializeField] private int spawnTime = 4;
 
         private bool _nextUp;
@@ -18,8 +19,18 @@ namespace A3.Scripts
         {
             _isRunning = true;
             StartCoroutine(SpawnObstacles());
+            StartCoroutine(SpawnPowerUps());
         }
 
+        private IEnumerator SpawnPowerUps()
+        {
+            while (_isRunning)
+            {
+                yield return new WaitForSeconds(Random.Range(20, 40));
+                Instantiate(powerUp, transform);
+            }
+        }
+        
         private IEnumerator SpawnObstacles()
         {
             while (_isRunning)

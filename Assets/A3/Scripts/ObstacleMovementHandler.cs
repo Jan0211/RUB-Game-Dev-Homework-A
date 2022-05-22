@@ -6,7 +6,7 @@ namespace A3.Scripts
     {
         [SerializeField] private float movementSpeed = 1f;
 
-        private bool _scoreUpdated = false;
+        private bool _scoreUpdated;
         
         private void Update()
         {
