@@ -7,6 +7,7 @@ namespace A3.Scripts
     {
         [SerializeField] private GameObject obsUp;
         [SerializeField] private GameObject obsDown;
+        [SerializeField] private GameObject duck;
         [SerializeField] private int spawnTime = 4;
 
         private bool _nextUp;
@@ -26,7 +27,7 @@ namespace A3.Scripts
                 yield return new WaitForSeconds(spawnTime);
                 if (_obsCount >= 6)
                 {
-                    //TODO Spawn special
+                    Instantiate(duck, transform);
                     _obsCount = 0;
                 }
                 else

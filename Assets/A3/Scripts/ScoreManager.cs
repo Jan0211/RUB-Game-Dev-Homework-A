@@ -1,16 +1,33 @@
-﻿using System;
+﻿using TMPro;
 using UnityEngine;
+using UnityTools.General;
 
 namespace A3.Scripts
 {
-    public class ScoreManager : MonoBehaviour
+    public class ScoreManager : UnitySingleton<ScoreManager>
     {
-        public static ScoreManager Instance { get; private set; }
+        [SerializeField] private TMP_Text text;
 
-        private void Awake()
+        private int _score;
+        
+        public int Score
         {
-            if (Instance != null && Instance != this) Destroy(this);
-            else Instance = this;
+            get => _score;
+            set
+            {
+                _score = value;
+                UpdateScore();
+            }
+        }
+
+        private void Start()
+        {
+            Score = 0;
+        }
+
+        private void UpdateScore()
+        {
+            text.text = $"Score: {_score}";
         }
     }
 }
