@@ -10,8 +10,8 @@ namespace A1.Scripts
         [SerializeField]private UnityEvent doge;
         [SerializeField]private UnityEvent lockdown;
         [SerializeField]private UnityEvent squidgame;
-        [SerializeField]private UnityEvent additional1;
-        [SerializeField]private UnityEvent additional2;
+        [SerializeField]private UnityEvent glow;
+        [SerializeField]private UnityEvent max;
 
         private StringBuilder _stringBuilder;
 
@@ -48,8 +48,8 @@ namespace A1.Scripts
             if (tmp.EndsWith("DOGE")) doge.Invoke();
             else if (tmp.EndsWith("LOCKDOWN")) lockdown.Invoke();
             else if (tmp.EndsWith("SQUIDGAME")) squidgame.Invoke();
-            else if (tmp.EndsWith("ADDITIONAL1")) additional1.Invoke();
-            else if (tmp.EndsWith("ADDITIONAL2")) additional2.Invoke();
+            else if (tmp.EndsWith("GLOW")) glow.Invoke();
+            else if (tmp.EndsWith("MAX")) max.Invoke();
         }
 
     }

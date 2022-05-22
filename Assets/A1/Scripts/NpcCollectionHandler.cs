@@ -21,6 +21,14 @@ namespace A1.Scripts
         {
             foreach (var c in _controllers) c.Doge();
         }
+
+        public void Maximize()
+        {
+            foreach (var c in _controllers)
+            {
+                c.transform.parent.transform.localScale = new Vector3(2, 2, 2);
+            }
+        }
         
     }
 }
