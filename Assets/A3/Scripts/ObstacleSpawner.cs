@@ -1,0 +1,42 @@
+﻿using System.Collections;
+using UnityEngine;
+
+namespace A3.Scripts
+{
+    public class ObstacleSpawner : MonoBehaviour
+    {
+        [SerializeField] private GameObject obsUp;
+        [SerializeField] private GameObject obsDown;
+        [SerializeField] private int spawnTime = 4;
+
+        private bool _nextUp;
+        private bool _isRunning;
+        private int _obsCount;
+
+        private void Start()
+        {
+            _isRunning = true;
+            StartCoroutine(SpawnObstacles());
+        }
+
+        private IEnumerator SpawnObstacles()
+        {
+            while (_isRunning)
+            {
+                yield return new WaitForSeconds(spawnTime);
+                if (_obsCount >= 6)
+                {
+                    //TODO Spawn special
+                    _obsCount = 0;
+                }
+                else
+                {
+                    Instantiate(_nextUp ? obsUp : obsDown, this.transform);
+                    _nextUp = !_nextUp;
+                    _obsCount++;
+                }
+            }
+        }
+
+    }
+}

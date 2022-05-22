@@ -1,0 +1,34 @@
+{
+    "name": "TappyPlane",
+    "maps": [
+        {
+            "name": "PlaneController",
+            "id": "c0447d3c-ae59-4791-b532-ae3c3907f374",
+            "actions": [
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "1564e8e2-d743-41b3-80f2-9605d54a76ec",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "ecd2fb15-970f-49ef-a5da-c7fbb99932f8",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
