@@ -319,7 +319,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.735849, g: 0.53967154, b: 0.107600555, a: 1}
+  m_Color: {r: 1, g: 0.90959597, b: 0.5424528, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -461,7 +461,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &892301391
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -542,7 +542,7 @@ GameObject:
   - component: {fileID: 1279280307}
   m_Layer: 0
   m_Name: Square
-  m_TagString: Untagged
+  m_TagString: KillPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -589,7 +589,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 3
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.16768244, g: 0.6415094, b: 0, a: 1}
+  m_Color: {r: 0.34234473, g: 0.754717, b: 0.19579923, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -686,7 +686,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obsUp: {fileID: 1077578270865194603, guid: af182f46136dbfa43842bb9b9e09a4ad, type: 3}
   obsDown: {fileID: 4313493038952638373, guid: 9702e0f65875e4144a89df81af9834ed, type: 3}
-  spawnTime: 2
+  spawnTime: 1
 --- !u!1 &1497515682
 GameObject:
   m_ObjectHideFlags: 0
@@ -919,7 +919,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 45082cac9c385514e92f4e9fa489cc89, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

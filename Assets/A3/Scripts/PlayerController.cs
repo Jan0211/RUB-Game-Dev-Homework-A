@@ -35,11 +35,11 @@ namespace A3.Scripts
             if(_rigidbody2D.velocity.y < 0) _rigidbody2D.velocity = Vector2.zero;
             _rigidbody2D.AddForce(Vector2.up * 10 * jumpStrength);
         }
-
-        // ReSharper disable once UnusedParameter.Local
+        
         private void OnCollisionEnter2D(Collision2D col)
         {
             if (_isDead) return;
+            if (!col.gameObject.CompareTag("KillPlayer")) return;
             _rigidbody2D.constraints = RigidbodyConstraints2D.None;
             _rigidbody2D.AddTorque(0.1f, ForceMode2D.Impulse);
             _isDead = true;

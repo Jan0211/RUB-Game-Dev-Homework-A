@@ -7,7 +7,7 @@ namespace A3.Scripts
         [SerializeField] private float movementSpeed = 1f;
         private void Update()
         {
-            if(transform.position.x <= -10) Destroy(this);
+            if(transform.position.x <= -10) Destroy(this.gameObject);
             transform.Translate(Time.deltaTime * -1 * movementSpeed, 0, 0);
         }
     }
