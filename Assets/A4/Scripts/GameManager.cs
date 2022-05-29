@@ -25,6 +25,8 @@ namespace A4.Scripts
 
         [SerializeField] private GameObject student;
         [SerializeField] private GameObject scientist;
+
+        [SerializeField] private DataHolder dataHolder;
         
         private int _currentMoney;
 
@@ -37,6 +39,7 @@ namespace A4.Scripts
         
         private void Start()
         {
+            if (PlayerPrefs.HasKey("PlayTime")) _totalPlaytime = PlayerPrefs.GetInt("PlayTime");
             UpdateUI();
             StartCoroutine(TimeProgress());
         }
@@ -79,13 +82,15 @@ namespace A4.Scripts
                 _totalPlaytime++;
                 _currentMoney += _currentIncreaseOverTime;
                 UpdateUI();
+                PlayerPrefs.SetInt("PlayTime", _totalPlaytime);
+                PlayerPrefs.Save();
             }
         }
 
         public void UpgradeClick()
         {
             var cost = GetCurrentClickCost();
-            if (_currentMoney < cost) return;
+            if (_currentMoney < cost || _levelClick >= 50) return;
             _currentMoney -= cost;
             _levelClick++;
             _currentIncrease++;
@@ -95,7 +100,7 @@ namespace A4.Scripts
         public void UpgradeStudent()
         {
             var cost = GetCurrentStudentCost();
-            if (_currentMoney < cost) return;
+            if (_currentMoney < cost || _levelStudent >= 50) return;
             _currentMoney -= cost;
             _levelStudent++;
             _currentIncreaseOverTime++;
@@ -106,7 +111,7 @@ namespace A4.Scripts
         public void UpgradeScientist()
         {
             var cost = GetCurrentScientistCost();
-            if (_currentMoney < cost) return;
+            if (_currentMoney < cost || _levelScientist >= 50) return;
             _currentMoney -= cost;
             _levelScientist++;
             _currentIncreaseOverTime += 2;
@@ -116,17 +121,17 @@ namespace A4.Scripts
 
         private int GetCurrentClickCost()
         {
-            return (int) (7 * Math.Pow(1.4f, _levelClick));
+            return (int) (dataHolder.baseCostClick * Math.Pow(dataHolder.multiplierClick, _levelClick));
         }
 
         private int GetCurrentStudentCost()
         {
-            return (int)(7 * Math.Pow(1.08f, _levelStudent));
+            return (int)(dataHolder.baseCostStudent * Math.Pow(dataHolder.multiplierCharacter, _levelStudent));
         }
 
         private int GetCurrentScientistCost()
         {
-            return (int)(7 * Math.Pow(1.08f, _levelScientist));
+            return (int)(dataHolder.baseCostScientist * Math.Pow(dataHolder.multiplierCharacter, _levelScientist));
         }
 
     }

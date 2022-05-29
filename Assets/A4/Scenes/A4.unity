@@ -315,6 +315,7 @@ MonoBehaviour:
   spawnText: {fileID: 4387145070050078364, guid: cc220876709e9c24a9edc8216cb29946, type: 3}
   student: {fileID: 3393255973830218531, guid: d7ed33794303c9f46959e177cb0a4ae1, type: 3}
   scientist: {fileID: 7288157546874612899, guid: 9007763f0b5c6e74c85419b3a12158ba, type: 3}
+  dataHolder: {fileID: 11400000, guid: 64458295a4256ab4bbd24fb6053e6546, type: 2}
 --- !u!61 &166916737
 BoxCollider2D:
   m_ObjectHideFlags: 0
