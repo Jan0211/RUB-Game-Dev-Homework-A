@@ -22,13 +22,16 @@ namespace A4.Scripts
         [SerializeField] private TMP_Text textPlaytime;
 
         [SerializeField] private GameObject spawnText;
+
+        [SerializeField] private GameObject student;
+        [SerializeField] private GameObject scientist;
         
         private int _currentMoney;
 
         private int _totalPlaytime;
         
-        private int _currentIncrease = 1, _currentIncreaseOverTime = 0;
-        private int _levelClick = 0, _levelStudent = 0, _levelScientist = 0;
+        private int _currentIncrease = 1, _currentIncreaseOverTime;
+        private int _levelClick, _levelStudent, _levelScientist;
 
         private bool _isRunning = true;
         
@@ -57,13 +60,10 @@ namespace A4.Scripts
             textLevelClick.text = _levelClick.ToString();
             textLevelStudent.text = _levelStudent.ToString();
             textLevelScientist.text = _levelScientist.ToString();
-
-            var costClick = (int)(7 * Math.Pow(1.4f, _levelClick));
-            textCostClick.text = $"Cost: {costClick}€";
-            var costStudent = (int)(7 * Math.Pow(1.08f, _levelStudent));
-            textCostStudent.text = $"Cost: {costStudent}€";
-            var costScientist = (int)(7 * Math.Pow(1.08f, _levelScientist));
-            textCostScientist.text = $"Cost: {costScientist}€";
+            
+            textCostClick.text = $"Cost: {GetCurrentClickCost()}€";
+            textCostStudent.text = $"Cost: {GetCurrentStudentCost()}€";
+            textCostScientist.text = $"Cost: {GetCurrentScientistCost()}€";
 
             textMoney.text = $"{_currentMoney} €";
             textIncrease.text = $"+ {_currentIncreaseOverTime} € / Second";
@@ -81,6 +81,53 @@ namespace A4.Scripts
                 UpdateUI();
             }
         }
-        
+
+        public void UpgradeClick()
+        {
+            var cost = GetCurrentClickCost();
+            if (_currentMoney < cost) return;
+            _currentMoney -= cost;
+            _levelClick++;
+            _currentIncrease++;
+            UpdateUI();
+        }
+
+        public void UpgradeStudent()
+        {
+            var cost = GetCurrentStudentCost();
+            if (_currentMoney < cost) return;
+            _currentMoney -= cost;
+            _levelStudent++;
+            _currentIncreaseOverTime++;
+            UpdateUI();
+            Instantiate(student);
+        }
+
+        public void UpgradeScientist()
+        {
+            var cost = GetCurrentScientistCost();
+            if (_currentMoney < cost) return;
+            _currentMoney -= cost;
+            _levelScientist++;
+            _currentIncreaseOverTime += 2;
+            UpdateUI();
+            Instantiate(scientist);
+        }
+
+        private int GetCurrentClickCost()
+        {
+            return (int) (7 * Math.Pow(1.4f, _levelClick));
+        }
+
+        private int GetCurrentStudentCost()
+        {
+            return (int)(7 * Math.Pow(1.08f, _levelStudent));
+        }
+
+        private int GetCurrentScientistCost()
+        {
+            return (int)(7 * Math.Pow(1.08f, _levelScientist));
+        }
+
     }
 }
