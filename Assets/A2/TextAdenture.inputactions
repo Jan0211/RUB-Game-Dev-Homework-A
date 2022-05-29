@@ -1,0 +1,114 @@
+{
+    "name": "TextAdenture",
+    "maps": [
+        {
+            "name": "PlayerActionMap",
+            "id": "bca5ed29-ddd2-40f1-88bd-4e50be8e17c4",
+            "actions": [
+                {
+                    "name": "press1",
+                    "type": "Button",
+                    "id": "79a84764-ffa7-4fae-89c5-791874fbdaf9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "press2",
+                    "type": "Button",
+                    "id": "876d0a0f-ad30-4158-a973-b12c75017440",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "press3",
+                    "type": "Button",
+                    "id": "df06dbed-000e-4d1b-96af-3e9d12cba3d0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "press4",
+                    "type": "Button",
+                    "id": "5a0cd566-8b28-4a75-ab2e-a9115d1339e0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "anyKey",
+                    "type": "Button",
+                    "id": "6629eef3-ef80-47d1-a435-1346443b948d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "fd2a7e0a-ff54-4e29-aaa3-196d56970e5d",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "press1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ec6077f0-ff0c-47d6-ac1f-7c4c7ab42b4d",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "press2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c18f64a9-8088-4f31-81ca-fe855ba4efb2",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "press3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a0cdacf7-b9ed-4648-8741-d10a5c412c74",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "press4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d2e3db12-dd65-4022-b7ed-f6eecfa6c90a",
+                    "path": "<Keyboard>/anyKey",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "anyKey",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
